@@ -1,33 +1,352 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Fondo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Header con vh</title>
-    <style>
-        body {
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">
+    <style type="text/css">
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
-        header {
-            width: 100%;
-            height: 6.03vh;
-            background-color: #4CAF50; /* Puedes cambiar el color de fondo según prefieras */
+        html {
+            font-size: 100%;
+            -webkit-text-size-adjust: 100%;
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Onest', sans-serif;
+            line-height: 1.47059;
+            letter-spacing: -.022em;
+            font-size: 16px;
+            font-style: normal;
             display: flex;
-            align-items: center;
-            justify-content: center;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+            background-color: black;
             color: white;
-            font-size: 1.5rem;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+            font-synthesis: none;
+        }
+        #particles-js {
+            position: absolute;
+            width: 100vw;
+            height: 100vh;
+            background-color: #000; /* Color de fondo similar a GitHub */
+            background-size: cover;
+            background-position: 50% 50%;
+            z-index: 0;
+        }
+        header {
+            position: fixed;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            width: 100%;
+            height: 48px;
+            border-bottom: ;
+            background-color: rgba(22, 22, 23, .8);
+            backdrop-filter: blur(20px) saturate(180%);
+        }
+        header > a {
+            text-decoration: none;
+            color: white;
+            font-size: 19px;
+            font-weight: 500;
+        }
+        .botones {
+            display: flex;
+            gap: 15px;
+        }
+        .theme-toggle {
+            cursor: pointer;
+            background: none;
+            border: none;
+            text-align: center;
+            padding: 5px;
+            font-size: 19px; /* Ajusta el tamaño del ícono aquí */
+            transition: background-color 0.3s;
+        }
+        .theme-toggle > svg {
+            height: 18px;
+            width: 18px;
+            color: white;
+        }
+        #selected-language {
+            background: none;
+            color: white;
+            padding: 5px;
+            border: none;
+            cursor: pointer;
+            font-size: 19px;
+            text-align: center;
+        }
+        #selected-language > svg {
+            height: 18px;
+            width: 18px;
+            color: white;
+        }
+        #language-list {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            background-color: rgba(22, 22, 23, .8);
+            backdrop-filter: blur(20px) saturate(180%);
+            border: ;
+            position: fixed;
+            top: 65px;
+            right: 20px;
+            z-index: 1000;
+            border-radius: 8px;
+            width: 150px;
+            text-align: left;
+        }
+
+        #language-list li {
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 13px;
+        }
+        #language-list li:hover {
+            color: rgba(255, 255, 255, .9);
+        }
+        .hidden {
+            display: none;
         }
     </style>
 </head>
 <body>
+    <div id="particles-js"></div>
+    <header>
+        <a href="#">DESTROYER</a>
+        <div class="botones">
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+            </button>
+            <button id="selected-language">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-languages"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>
+            </button>
+            <!--<ul id="language-list" class="hidden">
+                <li data-lang="en">ENGLISH</li>
+                <li data-lang="es">ESPAÑOL</li>
+                <li data-lang="pt">PORTUGUES</li>
+                <li data-lang="gn">GUARANÍ</li>
+            </ul>-->
+        </div>
+    </header>
+            <ul id="language-list" class="hidden">
+                <li data-lang="en">ENGLISH</li>
+                <li data-lang="es">ESPAÑOL</li>
+                <li data-lang="pt">PORTUGUES</li>
+                <li data-lang="gn">GUARANÍ</li>
+            </ul>
+    <!--  PARTICULAS  -->
+    <script>
+        particlesJS('particles-js', {
+            "particles": {
+                "number": {
+                    "value": 80,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#007CFF"
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    },
+                    "polygon": {
+                        "nb_sides": 5
+                    }
+                },
+                "opacity": {
+                    "value": 0.5,
+                    "random": false,
+                    "anim": {
+                        "enable": false,
+                        "speed": 1,
+                        "opacity_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 4,
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                        "speed": 40,
+                        "size_min": 0.4,
+                        "sync": false
+                    }
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#F0FEFF",
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 6,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "attract": {
+                        "enable": false,
+                        "rotateX": 600,
+                        "rotateY": 1200
+                    }
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": false,
+                        "mode": "grab"
+                    },
+                    "onclick": {
+                        "enable": false,
+                        "mode": "push"
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 140,
+                        "line_linked": {
+                            "opacity": 1
+                        }
+                    },
+                    "bubble": {
+                        "distance": 400,
+                        "size": 40,
+                        "duration": 2,
+                        "opacity": 8,
+                        "speed": 3
+                    },
+                    "repulse": {
+                        "distance": 200,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    },
+                    "remove": {
+                        "particles_nb": 2
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+    </script>
+    <!--  MODO OSCURO-->
+    <script type="text/javascript" charset="utf-8">
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+        const lightIcon = `
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-moon"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        `;
+        const darkIcon = `
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+        `;
 
-<header>
-    Mi Encabezado
-</header>
+        const toggleTheme = () => {
+            if (body.classList.contains('dark-mode')) {
+                body.classList.remove('dark-mode');
+                themeToggle.innerHTML = darkIcon; // Cambia al ícono del sol cuando en modo claro
+            } else {
+                body.classList.add('dark-mode');
+                themeToggle.innerHTML = lightIcon; // Cambia al ícono de la luna cuando en modo oscuro
+            }
+        };
 
+        themeToggle.addEventListener('click', toggleTheme);
+
+        // Inicializa el tema y el ícono
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            body.classList.add('dark-mode');
+            themeToggle.innerHTML = lightIcon; // Muestra el ícono de la luna en modo oscuro
+        } else {
+            themeToggle.innerHTML = darkIcon; // Muestra el ícono del sol en modo claro
+        }
+
+        // Guarda la preferencia del tema
+        body.addEventListener('classListChanged', () => {
+            localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
+        });
+    </script>
+    <!--  LENGUAJE  -->
+    <script type="text/javascript" charset="utf-8">
+        const translations = {
+            en: {
+                welcome: "Welcome",
+                description: "This is a simple multilingual page."
+            },
+            es: {
+                welcome: "Bienvenido",
+                description: "Esta es una página multilingüe sencilla."
+            },
+            fr: {
+                welcome: "Bienvenue",
+                description: "Ceci est une page multilingue simple."
+            },
+            de: {
+                welcome: "Willkommen",
+                description: "Dies ist eine einfache mehrsprachige Seite."
+            },
+            pt: {
+                welcome: "Bem-vindo",
+                description: "Esta é uma página multilingue simples."
+            },
+            ja: {
+                welcome: "ようこそ",
+                description: "これはシンプルな多言語ページです。"
+            },
+            zh: {
+                welcome: "欢迎",
+                description: "这是一个简单的多语言页面。"
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const selectedLanguage = document.getElementById('selected-language');
+            const languageList = document.getElementById('language-list');
+
+            selectedLanguage.addEventListener('click', function() {
+                languageList.classList.toggle('hidden');
+            });
+
+            languageList.addEventListener('click', function(e) {
+                if (e.target.tagName === 'LI') {
+                    const lang = e.target.getAttribute('data-lang');
+                    document.getElementById('welcome-text').textContent = translations[lang].welcome;
+                    document.getElementById('description-text').textContent = translations[lang].description;
+                    languageList.classList.add('hidden');
+                }
+            });
+
+            document.addEventListener('click', function(e) {
+                if (!languageList.contains(e.target) && !selectedLanguage.contains(e.target)) {
+                    languageList.classList.add('hidden');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
